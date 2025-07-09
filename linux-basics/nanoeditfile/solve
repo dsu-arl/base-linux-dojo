@@ -1,0 +1,34 @@
+#!/usr/bin/exec-suid -- /usr/bin/python3.12 -I
+from os.path import exists
+
+USERFILE = '/home/hacker/my_nano_file.txt'
+USERTEXT = "CybHer 2025!"
+HISTORY = '/home/hacker/.bash_history'
+
+def main():
+
+    if exists(USERFILE):
+        with open(USERFILE, 'r') as fObj:
+            data = fObj.read().strip()
+            if USERTEXT.lower().strip() == data.lower():
+                print("The file still contains the original text! Please change it!")
+                exit(0)
+            else:
+                print(f"Good job! You changed the text to: '{data}'")
+    else:
+        print("Couldn't find 'my_nano_file.txt' in your home directory.")
+        print("If you didn't do the previous challenge, go and do that now.")
+        print("If you did do the previous challenge, then just re-create 'my_nano_file.txt'.")
+        exit(0)
+    
+
+    with open('/flag', 'r') as fObj2:
+        print("Here's your flag:")
+        print(fObj2.read())
+        exit(0)
+
+
+
+if __name__ == "__main__":
+    main()
+

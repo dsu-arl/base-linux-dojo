@@ -1,0 +1,30 @@
+#!/usr/bin/exec-suid -- /usr/bin/python3.12 -I
+import stat
+from os import makedirs, listdir, chmod
+from os.path import exists, join
+
+USERFILE = '/home/hacker/my_nano_file.txt'
+USERTEXT = "CybHer 2025!"
+HISTORY = '/home/hacker/.bash_history'
+
+def main():
+    if not exists(USERFILE):
+        print("I was not able to find a file called 'my_nano_file.txt' in your home directory (/home/hacker).")
+        print("Try again!")
+        exit(0)
+    else:
+        with open(USERFILE, 'r') as fObj:
+            data = fObj.read()
+        if USERTEXT.lower() not in data.lower():
+            print(f"Your file does not seem to contain the text '{USERTEXT}'.")
+            print("Open the file by typing 'nano my_nano_file.txt', and try again!")
+            exit(0)
+
+    with open('/flag', 'r') as fObj2:
+        print("Great work! Here's your flag:")
+        print(fObj2.read())
+        exit(0)
+
+if __name__ == "__main__":
+    main()
+
