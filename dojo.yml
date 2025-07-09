@@ -1,0 +1,8 @@
+id: linux
+name: Linux
+modules:
+- id: linux-basics
+  name: Linux Basics
+- id: linux-admin
+  name: Linux Admin
+type: base
