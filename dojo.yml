@@ -1,5 +1,6 @@
 id: linux
 name: Linux
+image: annaopsahl/pc-linux
 modules:
 - id: linux-basics
   name: Linux Basics
