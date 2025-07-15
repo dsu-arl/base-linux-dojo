@@ -18,7 +18,7 @@ def print_instructions():
 
     Use the 'userdel' command to delete the `origen` user account.
 
-        'userdel {username}'
+        userdel {username}
 
     When you're finished, run /challenge/solve again to get your flag!
     """)
