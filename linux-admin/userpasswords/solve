@@ -21,9 +21,17 @@ def print_instructions():
         P.S. My account name is 'wkiffin', please set my temporary
         password to 'Password1!'
 
-    Use the 'passwd' command to change 'wkiffin's password!
+    Use the 'passwd' command to change wkiffin's password!
 
-        'passwd {useraccount} {newpassword}'
+        'passwd {useraccount}'
+
+    You will then be prompted to enter a new password and
+    confirm it. (Note that 'passwd' does not display any
+    symbols while you are typing, so it may look like 
+    nothing is happening. Type the password and press Enter.)
+
+    Run '/challenge/solve' once the password is updated to 
+    get your flag!
 
     """)
 
