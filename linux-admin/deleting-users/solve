@@ -9,17 +9,16 @@ def print_instructions():
     You have received another IT support email!
 
           Dear System Administrator,
-            Origen has been labeled a heretic by the Second Council of Constantinople,
-            and therefore his user account must be deleted. Please perform this action
-            at your earliest convenience.
+            Origen has moved on to another job opportunity and 
+            therefore his user account must be deleted. Please perform 
+            this action at your earliest convenience.
 
           Sincerely,
-
-          Second Council of Constantinople
+            Management          
 
     Use the 'userdel' command to delete the `origen` user account.
 
-    userdel origen
+        'userdel {username}'
 
     When you're finished, run /challenge/solve again to get your flag!
     """)
