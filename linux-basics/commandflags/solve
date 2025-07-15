@@ -35,7 +35,7 @@ def main():
         those answers!
 
         Your first question will be printed below.
-        Once you've solved it, run '/challenge/solve' 
+        For each question, run '/challenge/solve' 
         again to enter your answer.
         """)
 
@@ -54,7 +54,7 @@ def main():
         if ans == subprocess.run('uname -s', shell=True, text=True, capture_output=True).stdout.strip():
             with open('/tmp/.check_two', 'w') as fObj:
                 fObj.write('check')
-            print("Question 2: Using 'uname', what is the kernel release of this device?")
+            print("\nQuestion 2: Using 'uname', what is the kernel release of this device?\n")
         else:
             print("Oops! That's not correct!")
 
@@ -69,7 +69,7 @@ def main():
         if ans == subprocess.run('uname -r', shell=True, text=True, capture_output=True).stdout.strip():
             with open('/tmp/.check_three', 'w') as fObj:
                 fObj.write('check')
-            print("Question 3: Using 'uname', what is the machine type of this device?")
+            print("\nQuestion 3: Using 'uname', what is the machine type of this device?\n")
         else:
             print("Oops! That's not correct!")
         
