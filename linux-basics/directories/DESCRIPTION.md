@@ -1,6 +1,4 @@
-Before you start this challenge, you should have some understanding of how Linux works.
-
-# The Linux Filesystem
+## The Linux Filesystem
 
 In Linux, the filesystem is structured like a tree, starting from the root directory (denoted by the character '/'), which is the base of everything. A 'directory' is just a folder. Think of / as the foundation that holds every file and folder on the system. Here are a few essential directories to get familiar with:
 

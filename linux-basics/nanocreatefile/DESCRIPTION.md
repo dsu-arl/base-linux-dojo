@@ -27,12 +27,10 @@ To confirm your filename, press `Enter`. Or, if you'd like to change your filena
 
 To put that all together for you, when you're done editing your file and are ready to save and close it: `CTRL+X` -> `y` -> `Enter`.
 
-To complete this challenge you will use nano to create a file named `my_nano_file.txt` in your home directory (when you open the terminal, you will be in your home directory by default). This file should contain the phrase "CybHer 2025!". When you have put the text in your file, save and close it, then run `/challenge/solve` to verify that your file was made properly.
-
 ## Challenge Steps
 1. Start the challenge and open a terminal
 2. Use `nano` to create a file named `my_nano_file.txt`
-3. Type the phrase "CybHer 2025!" in your file
+3. Type the phrase "Nano is fun!" in your file
 4. Save and close your file: `CTRL+X` -> `y` -> `Enter`
 5. Run `/challenge/solve` to verify your solution
 6. Submit your flag

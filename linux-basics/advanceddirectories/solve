@@ -40,6 +40,7 @@ def mkdir_instructions():
 
         'mkdir {name_of_directory}'
 
+    Run '/challenge/solve' again to get the next steps!
     """)
 
 def rmdir_check():
@@ -69,7 +70,10 @@ def rmdir_instructions():
 
     You may run into complications, are you able to
     solve the problem and get past it? 
+    (Hint: remember what 'rm' and the '*' each do?)
 
+    Run '/challenge/solve' again once you've deleted 
+    that directory!
     """)
 
 def ls_check():
@@ -92,7 +96,7 @@ def ls_instructions():
     command to tell it you want to view hidden files.
 
     Hidden files are files that have a dot (.) in front
-    of their name. This means they wont show up if you just 
+    of their name. This means they won't show up if you just 
     type 'ls'.
 
     However, if we pass the 'a' flag to ls, we can view
@@ -107,8 +111,8 @@ def ls_instructions():
     In your home directory find a hidden password file,
     'cat' the file, and copy it's contents. 
 
-    You will then run '/challenge/solve' and supply the
-    password!
+    You will then run '/challenge/solve' one last time,
+    supply the password and get your flag!
 
     """)
 
