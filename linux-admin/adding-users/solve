@@ -1,4 +1,4 @@
-#!/opt/pwn.college/python
+#!/usr/bin/exec-suid -- /usr/bin/python3.12 -I
 import sys
 import pwd
 
@@ -10,18 +10,18 @@ def print_instructions():
 
           Dear System Administrator,
 
-          My name is John Bunyan, and I am new to this company. If you could create a user account for me
-          on my computer that would be great! I would prefer the username 'jbunyan'.
+          My name is John Bunyan, and I am new to this company. If you could create 
+          a user account for me on my computer that would be great! 
+          I would prefer the username 'jbunyan'.
 
           Sincerely,
-
           John
 
     Use the 'useradd' command to create a new user account for John Bunyan:
 
-          useradd -m jbunyan
+          useradd -m {username}
 
-    The '-m' flag for the useradd command means to create a 'home' directory for that user, as in '/home/jbunyan'.
+    The '-m' flag for the 'useradd' command means to create a 'home' directory for that user, as in '/home/jbunyan'.
 
     Once you've created the new user, run this program again to get your flag!
     """)

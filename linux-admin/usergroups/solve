@@ -1,10 +1,16 @@
-#!/opt/pwn.college/python
+#!/usr/bin/exec-suid -- /usr/bin/python3.12 -I
 
 import grp
 import pwd
 
 def print_instructions():
     print("""
+
+    In Linux, a user group is a collection of users that are grouped together 
+    to simplify permission management. By assigning users to a group, you can 
+    easily control access to files, directories, and resources for all group 
+    members at once, rather than configuring permissions for each user individually.
+
     Another day, another email! Good 'ol William Kiffin
     has emailed you again asking you to add his user account to a new group.
 
@@ -19,11 +25,20 @@ def print_instructions():
 
         P.S. My account name is 'wkiffin'.
 
+    We can use the 'usermod' command to do this! 'usermod' is a Linux command 
+    used to modify an existing user account. It allows administrators to change things 
+    like user groups, home directories, and permissions.
+
+    The '-aG' flags will be helpful here. '-a' stands for "append" (adding the username
+    to the end of a list of users). And the '-G' is used to specify which group to add
+    the user to. It will look like this:
+    
+          'usermod -aG {group} {username}'
+
     Use the 'usermod' command to add the 'wkiffin' user to the 'docker' group!
 
-          'usermod -aG docker wkiffin'
+    When you're done, run '/challenge/solve' again to get your flag!
 
-    When you're done, run /challenge/solve again to get your flag!
     """)
 
 def main():
