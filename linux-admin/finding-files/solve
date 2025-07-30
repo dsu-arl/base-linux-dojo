@@ -32,7 +32,7 @@ def print_instructions():
     * f           -   the filetype, f means file and d means directory
     * 2>/dev/null -   tells find to ignore files that it can't access
 
-    Once you've found the file, run /challenge/verify again and provide the name of the file for the flag!
+    Once you've found the file, run /challenge/solve again and provide the name of the file for the flag!
     """)
 
 def print_flag():
