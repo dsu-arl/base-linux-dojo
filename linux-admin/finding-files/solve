@@ -1,0 +1,61 @@
+#!/usr/bin/exec-suid -- /usr/bin/python3.12 -I
+from os import path
+import sys
+import string
+import random
+sys.path.append('/challenge')
+
+def setup():
+    # Create random file to find
+    filename = ''.join(random.choice(string.ascii_lowercase + string.digits) for _ in range(10))
+    filename = f"{filename}_flag"
+    with open(f"/tmp/{filename}", "w") as f:
+        f.write("This is the file you're looking for!")
+
+    with open("/tmp/ran", "w") as f:
+        f.write(f"/tmp/{filename}")
+
+def print_instructions():
+    print("""
+    In this challenge you will be using the \"find\" command in Linux
+    to find a specific file on the system. The file you are looking for ends
+    with \"flag\" and exists in the directory /tmp. To find a file that contains
+    a certain string, use the following command:
+
+    find /tmp -name \"*flag\" -type f 2>/dev/null
+
+    Explanation:
+    * /tmp        -   the directory to search in
+    * -name       -   lets you provide a name to search for
+    * \"*flag\"   -   the filename to search for, * means any characters with \'flag\' at the end
+    * -type       -   lets you provide a filetype (file or directory)
+    * f           -   the filetype, f means file and d means directory
+    * 2>/dev/null -   tells find to ignore files that it can't access
+
+    Once you've found the file, run /challenge/solve again and provide the name of the file for the flag!
+    """)
+
+def print_flag():
+    try:
+        with open("/flag", "r") as f:
+            print(f.read())
+    except FileNotFoundError:
+        print("Error: Flag file not found.")
+
+def main():
+    if path.exists("/tmp/ran"):
+        file = input("Enter the name of the file you found: ")
+        with open("/tmp/ran", "r") as f:
+            if file in f.read():
+                print("Correct! Here is your flag:")
+                print_flag()
+                return
+            else:
+                print("That's not the right file, try again!")
+                return
+
+    setup()
+    print_instructions()
+
+if __name__ == '__main__':
+    main()

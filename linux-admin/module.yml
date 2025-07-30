@@ -14,3 +14,6 @@ challenges:
 - id: adding-users
   name: Adding Users
   allow_privileged: false
+- id: finding-files
+  name: Finding Files
+  allow_privileged: false
