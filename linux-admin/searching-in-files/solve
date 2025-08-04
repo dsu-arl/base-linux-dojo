@@ -68,7 +68,7 @@ def print_instructions():
     to run this program again.
 
     Note: Grep will print the line that contains what you search for, so it may contain
-    more than just the flag. Make sure to select only the flag to copy.
+    more than just the flag. Make sure to only select the flag when you copy it.
     """)
 
 def get_flag():
