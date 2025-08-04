@@ -17,3 +17,6 @@ challenges:
 - id: finding-files
   name: Finding Files
   allow_privileged: false
+- id: searching-in-files
+  name: Searching In Files
+  allow_privileged: false
