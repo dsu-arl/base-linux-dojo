@@ -66,6 +66,9 @@ def print_instructions():
     This command searches for the string 'pwn.college' within the file '/tmp/searchme'.
     Once you've found the flag within /tmp/searchme, you can submit it right away, no need
     to run this program again.
+
+    Note: Grep will print the line that contains what you search for, so it may contain
+    more than just the flag. Make sure to select only the flag to copy.
     """)
 
 def get_flag():
