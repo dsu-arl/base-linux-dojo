@@ -20,3 +20,6 @@ challenges:
 - id: searching-in-files
   name: Searching In Files
   allow_privileged: false
+- id: advanced-file-searching
+  name: Advanced File Searching
+  allow_privileged: false
