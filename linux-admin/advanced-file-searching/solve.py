@@ -1,0 +1,53 @@
+#!/usr/bin/exec-suid --real -- /usr/bin/python -I
+import os
+import sys
+import base64
+sys.path.append('/challenge')
+
+def print_instructions():
+    print("""
+    In this challenge you will use the "grep" command again to search for more specific text.
+    Grep has many options that allow you to find very specific information within files.
+    Here are some useful options:
+        -A    -     Specify number of lines after the finding to show
+        -B    -     Specify number of lines before the finding to show
+        -o    -     Only show the finding, not the text around it
+
+    NMAP is a network scanning tool that can be used to show computers connected to a network and
+    what services they are running. A sample NMAP scan result as been put in "/challenge/scan.txt".
+    For this challenge, use Grep to search in the NMAP scan result file "/challenge/scan.txt"
+    for the IP address of the host that has "vsftpd" running on it.
+
+    When you find the IP address, run "/challenge/solve" again to enter it and get your flag.
+    """)
+
+    with open("/tmp/ran", "w") as f:
+        f.write("ran")
+
+    exit(0)
+
+def check():
+    address = input("Enter the IP address that you found: ")
+    return address in base64.b64decode("MTAuMC4wLjE1MAo=".encode("ascii")).decode("ascii")
+
+
+def print_flag():
+    try:
+        with open("/flag", "r") as f:
+            print(f.read())
+    except FileNotFoundError:
+        print("Error: Flag file not found.")
+
+def main():
+    if os.path.exists("/tmp/ran"):
+        if check():
+            print("Correct!")
+            print_flag()
+        else:
+            print("Not quite right, try again!")
+    else:
+        print_instructions()
+
+
+if __name__ == "__main__":
+    main()
