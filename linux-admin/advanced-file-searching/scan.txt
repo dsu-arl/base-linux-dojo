@@ -1,0 +1,42 @@
+Nmap scan report for workstation-10.local (192.168.1.10)
+Host is up (0.002s latency).
+MAC Address: 00:1A:2B:3C:4D:5E (Cisco Systems)
+All 65535 ports are filtered.
+PORT      STATE SERVICE VERSION
+22/tcp    open  ssh     OpenSSH 8.2 (protocol 2.0)
+80/tcp    open  http    Apache httpd 2.4.41 ((Unix) PHP/7.4.3)
+443/tcp   open  ssl/http Apache httpd 2.4.41 ((Unix) PHP/7.4.3)
+3389/tcp  open  ms-wbt-server?
+
+Nmap scan report for database-server.internal (172.16.50.25)
+Host is up (0.015s latency).
+All 65535 ports are filtered.
+PORT      STATE SERVICE VERSION
+53/tcp    open  domain?
+139/tcp   open  netbios-ssn Microsoft Windows netbios-ssn
+445/tcp   open  microsoft-ds Microsoft Windows SMBv3
+1433/tcp  open  ms-sql-s  Microsoft SQL Server 2019
+
+Nmap scan report for fileshare.private (10.0.0.150)
+Host is up (0.005s latency).
+All 65535 ports are filtered.
+PORT      STATE SERVICE VERSION
+21/tcp    open  ftp     vsftpd 3.0.3
+22/tcp    open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (protocol 2.0)
+80/tcp    open  http    lighttpd 1.4.55
+111/tcp   open  rpcbind?
+
+Nmap scan report for printer-hp.local (192.168.1.200)
+Host is up (0.008s latency).
+MAC Address: 00:5F:6G:7H:8I:9J (Dell Inc.)
+All 65535 ports are filtered.
+PORT      STATE SERVICE VERSION
+80/tcp    open  http    HP OfficeJet Pro http config
+515/tcp   open  printer?
+
+Nmap scan report for unknown-device (172.16.50.100)
+Host is up (0.021s latency).
+All 65535 ports are filtered.
+PORT      STATE SERVICE VERSION
+23/tcp    open  telnet  Linux telnetd
+8080/tcp  open  http    Jenkins CI 2.290
