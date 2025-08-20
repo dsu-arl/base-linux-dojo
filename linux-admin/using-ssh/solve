@@ -1,8 +1,7 @@
 #!/usr/bin/exec-suid -- /usr/bin/python3.12 -I
 # -*- mode: python -*-
+import os
 import sys
-import argparse
-from getpass import getpass
 sys.path.append('/challenge')
 
 def print_instructions():
@@ -22,28 +21,24 @@ def print_instructions():
     2. The username on the remote computer to log in as.
     3. The hostname of the remote computer.
 
+    When it asks you for a password, the password is 'Password1!'
+
     Run 'ssh hacker@coolmachine' to get your flag!
     """)
 
 def print_flag():
     try:
         with open("/flag", "r") as f:
-            return f.read()
+            print(f.read())
     except FileNotFoundError:
         print("Error: Flag file not found.")
 
 def main():
-    if args.ssh:
-        if getpass("hacker@coolmachine's password: ") == 'Password1!':
-            print(f"Congratulations! You have successfully logged in to coolmachine as the user 'hacker'. Here is your flag:")
-            print(print_flag())
+    if os.path.exists('/tmp/ran'):
+        print('Success! Here is your flag:')
+        print_flag()
     else:
         print_instructions()
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--ssh', required=False, action='store_true')
-
-    args = parser.parse_args()
-
     main()

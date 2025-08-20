@@ -1,6 +1,6 @@
 #!/bin/sh
 
 sed -i '/alias ssh=/d' /home/hacker/.bashrc
-echo "alias ssh='/challenge/solve --ssh'" >> /home/hacker/.bashrc
-echo "alias ssh='/challenge/solve --ssh'" >> /etc/skel/.bashrc
-echo "alias ssh='/challenge/solve --ssh'" >> /etc/bash.bashrc
+echo "alias ssh='/challenge/ssh'" >> /home/hacker/.bashrc
+echo "alias ssh='/challenge/ssh'" >> /etc/skel/.bashrc
+echo "alias ssh='/challenge/ssh'" >> /etc/bash.bashrc
