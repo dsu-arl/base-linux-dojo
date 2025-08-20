@@ -2,10 +2,9 @@
 # -*- mode: python -*-
 import sys
 from getpass import getpass
-sys.path.append('/challenge')
 
 def main():
-    if sys.argv[0] == 'ssh' and sys.argv[1] == 'hacker@coolmachine':
+    if sys.argv[1] == 'hacker@coolmachine':
         if getpass("hacker@coolmachine's password: ") == 'Password1!':
             with open('/tmp/ran', 'w') as f:
                 f.write('ran')

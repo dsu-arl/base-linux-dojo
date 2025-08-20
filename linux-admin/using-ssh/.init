@@ -1,6 +1,5 @@
 #!/bin/sh
 
-sed -i '/alias ssh=/d' /home/hacker/.bashrc
-echo "alias ssh='/challenge/ssh'" >> /home/hacker/.bashrc
-echo "alias ssh='/challenge/ssh'" >> /etc/skel/.bashrc
-echo "alias ssh='/challenge/ssh'" >> /etc/bash.bashrc
+cp /challenge/ssh /usr/local/bin/ssh
+chmod +x /usr/local/bin/ssh
+echo 'export PATH=$PATH:/usr/local/bin' >> /etc/bash.bashrc
