@@ -1,3 +1,4 @@
 #!/bin/sh
 
+sed -i '/alias ssh=/d' /home/hacker/.bashrc
 echo "alias ssh='/challenge/solve --ssh'" >> /home/hacker/.bashrc
