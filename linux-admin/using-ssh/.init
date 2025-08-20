@@ -1,3 +1,4 @@
 #!/bin/sh
 
-echo 'alias ssh=/challenge/ssh' >> /home/hacker/.bashrc
+cp /challenge/ssh /usr/local/bin/ssh
+echo 'export PATH=$PATH:/usr/local/bin' >> /home/hacker/.bashrc
