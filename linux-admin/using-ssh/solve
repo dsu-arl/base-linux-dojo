@@ -1,6 +1,7 @@
 #!/usr/bin/exec-suid -- /usr/bin/python3.12 -I
 # -*- mode: python -*-
 import sys
+import argparse
 from getpass import getpass
 sys.path.append('/challenge')
 
@@ -32,7 +33,7 @@ def print_flag():
         print("Error: Flag file not found.")
 
 def main():
-    if sys.argv[0] == 'ssh' and sys.argv[1] == 'hacker@coolmachine':
+    if args.ssh:
         if getpass("hacker@coolmachine's password: ") == 'Password1!':
             print(f"Congratulations! You have successfully logged in to coolmachine as the user 'hacker'. Here is your flag:")
             print(print_flag())
@@ -40,4 +41,9 @@ def main():
         print_instructions()
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--ssh', required=False, action='store_true')
+
+    args = parser.parse_args()
+
     main()
