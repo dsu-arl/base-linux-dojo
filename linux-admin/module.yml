@@ -23,3 +23,6 @@ challenges:
 - id: advanced-file-searching
   name: Advanced File Searching
   allow_privileged: false
+- id: using-ssh
+  name: Using SSH
+  allow_privileged: false

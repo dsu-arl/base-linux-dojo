@@ -1,0 +1,44 @@
+#!/usr/bin/exec-suid -- /usr/bin/python3.12 -I
+# -*- mode: python -*-
+import os
+import sys
+sys.path.append('/challenge')
+
+def print_instructions():
+    print("""
+    In this challenge you will use the 'ssh' command to log in to a remote computer.
+    To log in to a remote computer, 'ssh' needs to know the username and IP address or
+    hostname of the computer to log in to:
+
+    ssh hacker@coolmachine
+
+    ^     ^       ^
+    |     |       |
+    |     |       |
+    1.    2.      3.
+
+    1. The 'ssh' command.
+    2. The username on the remote computer to log in as.
+    3. The hostname of the remote computer.
+
+    When it asks you for a password, the password is 'Password1!'
+
+    Run 'ssh hacker@coolmachine' to get your flag!
+    """)
+
+def print_flag():
+    try:
+        with open("/flag", "r") as f:
+            print(f.read())
+    except FileNotFoundError:
+        print("Error: Flag file not found.")
+
+def main():
+    if os.path.exists('/tmp/ran'):
+        print('Success! Here is your flag:')
+        print_flag()
+    else:
+        print_instructions()
+
+if __name__ == '__main__':
+    main()

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+cp /challenge/ssh /usr/local/bin/ssh
+chmod +x /usr/local/bin/ssh
+echo 'export PATH=$PATH:/usr/local/bin' >> /etc/bash.bashrc

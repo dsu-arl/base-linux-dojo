@@ -1,0 +1,35 @@
+#!/usr/bin/python3.12
+# -*- mode: python -*-
+import sys
+import time
+from getpass import getpass
+
+# This is a fake version of SSH to demonstrate using SSH without a real machine to log in to.
+
+def main():
+    if len(sys.argv) < 2:
+        print("""usage: ssh [-46AaCfGgKkMNnqsTtVvXxYy] [-B bind_interface] [-b bind_address]
+           [-c cipher_spec] [-D [bind_address:]port] [-E log_file]
+           [-e escape_char] [-F configfile] [-I pkcs11] [-i identity_file]
+           [-J destination] [-L address] [-l login_name] [-m mac_spec]
+           [-O ctl_cmd] [-o option] [-P tag] [-p port] [-R address]
+           [-S ctl_path] [-W host:port] [-w local_tun[:remote_tun]]
+           destination [command [argument ...]]
+       ssh [-Q query_option]
+        """)
+        exit(1)
+    if sys.argv[1] == 'hacker@coolmachine':
+        if getpass("hacker@coolmachine's password: ") == 'Password1!':
+            with open('/tmp/ran', 'w') as f:
+                f.write('ran')
+            print(f"Congratulations! You have successfully logged in to coolmachine as the user 'hacker'.")
+            print("Run /challenge/solve again to get your flag.")
+        else:
+            time.sleep(2)
+            print("Permission denied, please try again.")
+    else:
+        time.sleep(2)
+        print(f"ssh: Could not resolve hostname {str(sys.argv[1])}: Name or service not known")
+
+if __name__ == '__main__':
+    main()
