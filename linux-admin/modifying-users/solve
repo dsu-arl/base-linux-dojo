@@ -1,0 +1,43 @@
+#!/usr/bin/exec-suid -- /usr/bin/python3.12 -I
+# -*- mode: python -*-
+import os
+import sys
+import grp
+sys.path.append('/challenge')
+
+def print_flag():
+    try:
+        with open("/flag", "r") as f:
+            print(f.read())
+    except FileNotFoundError:
+        print("Error: Flag file not found.")
+
+
+def check():
+    group = grp.getgrnam("mygroup")
+    if "hacker" in group.gr_mem:
+        print("The 'hacker' user was found in the group 'mygroup'! Here is your flag:")
+        print_flag()
+
+def print_instructions():
+    print("""
+    In this challenge you will use the "usermod" command to add the 'hacker' user
+    to the group 'mygroup' using the following command:
+
+    usermod -aG mygroup hacker
+
+    Note: Normally you would need to run this command as the 'root' (administrator) user. For
+    the purposes of this challenge, you don't have to here.
+    """)
+
+    with open('/tmp/ran', "w") as f:
+        f.write('ran')
+
+def main():
+    if os.path.exists('/tmp/ran'):
+        check()
+    else:
+        print_instructions()
+
+if __name__ == '__main__':
+    main()
