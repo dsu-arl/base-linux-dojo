@@ -25,6 +25,8 @@ def print_instructions():
     In this challenge you will use the 'chmod' command to add write
     permissions to the file '/tmp/myfile.txt'. Refer back to the challenge
     instructions for reference.
+
+    Once you're done, run '/challenge/solve' again to get your flag!
     """)
 
     with open('/tmp/ran', 'w') as f:
