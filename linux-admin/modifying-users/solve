@@ -28,6 +28,8 @@ def print_instructions():
 
     Note: Normally you would need to run this command as the 'root' (administrator) user. For
     the purposes of this challenge, you don't have to here.
+
+    After running the command, run "/challenge/solve" again to get your flag!
     """)
 
     with open('/tmp/ran', "w") as f:
