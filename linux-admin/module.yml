@@ -29,3 +29,6 @@ challenges:
 - id: modifying-users
   name: Modifying Users
   allow_privileged: false
+- id: changing-file-permissions
+  name: Changing File Permissions
+  allow_privileged: false

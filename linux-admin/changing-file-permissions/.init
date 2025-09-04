@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# Create /tmp/myfile.txt and make it read-only
+touch /tmp/myfile.txt
+chown /tmp/myfile.txt hacker
+chmod u-w /tmp/myfile.txt

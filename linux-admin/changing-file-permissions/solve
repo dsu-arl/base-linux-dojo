@@ -1,0 +1,40 @@
+#!/usr/bin/exec-suid --real -- /usr/bin/python -I
+# -*- mode: python -*-
+import sys
+import os
+sys.path.append('/challenge')
+
+FILE = '/tmp/myfile.txt'
+
+def print_flag():
+    try:
+        with open("/flag", "r") as f:
+            print(f.read())
+    except FileNotFoundError:
+        print("Error: Flag file not found.")
+
+def check():
+    if os.access(FILE, os.W_OK):
+        print(f'{FILE} is writable! Here is your flag:')
+        print_flag()
+    else:
+        print(f"Uh oh, it doesn't look like {FILE} is writable! Try again!")
+
+def print_instructions():
+    print("""
+    In this challenge you will use the 'chmod' command to add write
+    permissions to the file '/tmp/myfile.txt'. Refer back to the challenge
+    instructions for reference.
+    """)
+
+    with open('/tmp/ran', 'w') as f:
+        f.write('ran')
+
+def main():
+    if os.path.exists('/tmp/ran'):
+        check()
+    else:
+        print_instructions()
+
+if __name__ == '__main__':
+    main()
