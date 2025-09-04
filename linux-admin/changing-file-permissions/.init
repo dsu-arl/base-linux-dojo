@@ -2,5 +2,5 @@
 
 # Create /tmp/myfile.txt and make it read-only
 touch /tmp/myfile.txt
-chown /tmp/myfile.txt hacker
+chown hacker /tmp/myfile.txt
 chmod u-w /tmp/myfile.txt
