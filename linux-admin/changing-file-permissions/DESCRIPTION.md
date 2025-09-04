@@ -1,7 +1,7 @@
 In this challenge you will learn how to change file permissions on a Linux system.
 The `chmod` command is a Linux command for changing user and group permissions for files on the system.
-For example, to make a file called "myfile.txt" *writable* for the current user, run the following command:
-```
+For example, to make a file called "myfile.txt" **writable** for the current user, run the following command:
+```bash
 chmod u+w myfile.txt
 ```
 
