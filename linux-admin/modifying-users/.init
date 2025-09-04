@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Make usermod setuid so user doesn't have to use sudo
+chmod u+s $(which usermod)
+
+# Make group 'mygroup'
+groupadd mygroup

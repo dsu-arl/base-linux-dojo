@@ -26,3 +26,6 @@ challenges:
 - id: using-ssh
   name: Using SSH
   allow_privileged: false
+- id: modifying-users
+  name: Modifying Users
+  allow_privileged: false
