@@ -32,6 +32,7 @@ def print_instructions():
     3. The third command is 'du', which is a tool for showing how much disk space
     is being used by a directory and its files. How much space is being used by the
     '/home/hacker' directory?
+    Hint: Use 'du -h' to show the disk space usage in a human readable format.
 
     When you are done, run '/challenge/solve' again and enter your answers.
     """)
@@ -39,7 +40,7 @@ def print_instructions():
         f.write("ran")
 
 def df_check():
-    ans = int(input("1. How much disk space is left on the disk that is mounted on '/' (enter only the exact number)? "))
+    ans = int(input("1. How much disk space is left on the disk that is mounted on '/'? (enter only the exact number) "))
     KB = 1024
     MB = 1024 * KB
     GB = 1024 * MB
@@ -60,7 +61,8 @@ def du_check():
     du_proc = run(["du", "-hs", "/home/hacker"], capture_output=True, encoding="utf-8")
     space = du_proc.stdout.strip().split()[0]
 
-    ans = input("3. How much space does '/home/hacker' take up? Enter the exact amount reported by 'du': ")
+    ans = input("3. How much space does '/home/hacker' take up? (enter only the exact number) ")
+    ans = int(ans[:-1])
     return ans == space
 
 def main():
