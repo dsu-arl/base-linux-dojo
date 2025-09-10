@@ -61,7 +61,7 @@ def du_check():
     du_proc = run(["du", "-hs", "/home/hacker"], capture_output=True, encoding="utf-8")
     space = int(du_proc.stdout.strip().split()[0][:-1])
 
-    ans = input("3. How much space does '/home/hacker' take up? (enter only the exact number) ")
+    ans = int(input("3. How much space does '/home/hacker' take up? (enter only the exact number) "))
     return ans == space
 
 def main():
