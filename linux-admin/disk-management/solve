@@ -68,22 +68,14 @@ def main():
         print_instructions()
         return
 
-    wrong = []
+    while not df_check():
+        print("That's not quite right. Try again.")
 
-    if not df_check():
-        wrong.append("1")
-    if not lsblk_check():
-        wrong.append("2")
-    if not du_check():
-        wrong.append("3")
+    while not lsblk_check():
+        print("That's not quite right. Try again.")
 
-    if not wrong:
-        print("You submitted the correct answers! Here is your flag:")
-        print_flag()
-    else:
-        print("Uh oh, the answers to the following questions were wrong:")
-        for w in wrong:
-            print(f"- {w}")
+    while not du_check():
+        print("That's not quite right. Try again.")
 
 if __name__ == '__main__':
     main()
