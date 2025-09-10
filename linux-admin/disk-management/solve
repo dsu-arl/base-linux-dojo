@@ -48,7 +48,7 @@ def df_check():
 
 def lsblk_check():
     lsblk_proc = Popen(["lsblk"], stdout=PIPE)
-    grep_proc = Popen(["grep", "nvme"], stdin=lsblk_proc.stdout, stdout=PIPE, encoding="utf-8")
+    grep_proc = Popen(["grep", "sda"], stdin=lsblk_proc.stdout, stdout=PIPE, encoding="utf-8")
 
     stdout, _ = grep_proc.communicate()
     lines = stdout.strip().split("\n")
@@ -71,11 +71,16 @@ def main():
     while not df_check():
         print("That's not quite right. Try again.")
 
+    print("Correct!")
     while not lsblk_check():
         print("That's not quite right. Try again.")
 
+    print("Correct!")
     while not du_check():
         print("That's not quite right. Try again.")
+
+    print("All three answers were correct! Here is your flag!")
+    print_flag()
 
 if __name__ == '__main__':
     main()
