@@ -29,3 +29,6 @@ challenges:
 - id: modifying-users
   name: Modifying Users
   allow_privileged: false
+- id: disk-management
+  name: Disk Management
+  allow_privileged: false
