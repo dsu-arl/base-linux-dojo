@@ -1,0 +1,87 @@
+#!/usr/bin/exec-suid -- /usr/bin/python3.12 -I
+import os
+import sys
+import math
+import shutil
+from subprocess import Popen, run, PIPE
+sys.path.append('/challenge')
+
+# Get disk space
+# Have user enter disk space as answer
+# Check against disk space we got
+
+def print_flag():
+    try:
+        with open("/flag", "r") as f:
+            print(f.read())
+    except FileNotFoundError:
+        print("Error: Flag file not found.")
+
+def print_instructions():
+    print("""
+    In this challenge you will run some common disk management commands.
+    You will need to submit three different answers from three different commands.
+
+    1. The first command is 'df', which gets information about disk space. Use 'df -h' command
+    to get the amount of free disk space available. Hint: Look for the disk that is mounted on '/'.
+
+    2. The second command is 'lsblk', which lists all of the
+    disks on the system and their partitions. How many paritions are on the 'sda' disk?
+    Hint: Look for the lines that connect underneath the entry for 'sda'.
+
+    3. The third command is 'du', which is a tool for showing how much disk space
+    is being used by a directory and its files. How much space is being used by the
+    '/home/hacker' directory?
+    Hint: Use 'du -h' to show the disk space usage in a human readable format.
+
+    When you are done, run '/challenge/solve' again and enter your answers.
+    """)
+    with open("/tmp/ran", "w") as f:
+        f.write("ran")
+
+def df_check():
+    ans = int(input("1. How much disk space is left on the disk that is mounted on '/'? (enter only the exact number) "))
+    KB = 1024
+    MB = 1024 * KB
+    GB = 1024 * MB
+    free_space = math.ceil(shutil.disk_usage('/').free / GB)
+    return ans == free_space
+
+def lsblk_check():
+    lsblk_proc = Popen(["lsblk"], stdout=PIPE)
+    grep_proc = Popen(["grep", "sda"], stdin=lsblk_proc.stdout, stdout=PIPE, encoding="utf-8")
+
+    stdout, _ = grep_proc.communicate()
+    lines = stdout.strip().split("\n")
+
+    ans = int(input("2. How many partitions does the 'sda' disk have? "))
+    return ans == len(lines) - 1
+
+def du_check():
+    du_proc = run(["du", "-hs", "/home/hacker"], capture_output=True, encoding="utf-8")
+    space = int(du_proc.stdout.strip().split()[0][:-1])
+
+    ans = int(input("3. How much space does '/home/hacker' take up? (enter only the exact number) "))
+    return ans == space
+
+def main():
+    if not os.path.exists("/tmp/ran"):
+        print_instructions()
+        return
+
+    while not df_check():
+        print("That's not quite right. Try again.")
+
+    print("Correct!")
+    while not lsblk_check():
+        print("That's not quite right. Try again.")
+
+    print("Correct!")
+    while not du_check():
+        print("That's not quite right. Try again.")
+
+    print("All three answers were correct! Here is your flag!")
+    print_flag()
+
+if __name__ == '__main__':
+    main()
