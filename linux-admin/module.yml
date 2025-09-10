@@ -31,4 +31,6 @@ challenges:
   allow_privileged: false
 - id: disk-management
   name: Disk Management
+- id: changing-file-permissions
+  name: Changing File Permissions
   allow_privileged: false
