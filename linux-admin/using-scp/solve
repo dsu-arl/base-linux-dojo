@@ -1,4 +1,5 @@
 #!/usr/bin/exec-suid -- /usr/bin/python3.12 -I
+import os
 import sys
 sys.path.append('/challenge')
 
@@ -28,10 +29,35 @@ def print_instructions():
     2. Copy the directory {YELLOW}'/tmp/copythisdir'{RESET} to {YELLOW}'hacker@localhost:/home/hacker'{RESET}
            This can be done by running: {YELLOW}'scp -r /tmp/copythisdir hacker@localhost:/home/hacker'{RESET}
            Note: the {YELLOW}'-r'{RESET} flag must be used to copy directories.
+
+    Once you are done, run {YELLOW}'/challenge/solve'{RESET} again to get your flag!
     """)
 
+    with open("/tmp/copyme", "w") as f:
+        f.write("I want to be copied!")
+
+    os.mkdir("/tmp/copythisdir")
+
+    with open("/tmp/ran", "w") as f:
+        f.write("ran")
+
+def check():
+    if not os.path.exists("/home/hacker/copyme"):
+        print("Uh oh, it doesn't look like you copied '/home/hacker/copyme'. Try again.")
+        return
+
+    if not os.path.exists("/home/hacker/copythisdir"):
+        print("Uh oh, it doesn't look like you copied '/home/hacker/copythisdir. Try again.")
+        return
+
+    print("Both files were copied successfully! Here is your flag:")
+    print_flag()
+
 def main():
-    print_instructions()
+    if not os.path.exists("/tmp/ran"):
+        print_instructions()
+    else:
+        check()
 
 if __name__ == "__main__":
     main()
