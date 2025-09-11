@@ -34,3 +34,7 @@ challenges:
 - id: changing-file-permissions
   name: Changing File Permissions
   allow_privileged: false
+- id: using-scp
+  name: Using SCP
+  image: nickm543/pc-linux-admin-scp
+  allow_privileged: false

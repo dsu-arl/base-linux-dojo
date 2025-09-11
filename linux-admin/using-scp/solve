@@ -1,0 +1,21 @@
+#!/usr/bin/exec-suid -- /usr/bin/python3.12 -I
+import sys
+sys.path.append('/challenge')
+
+def print_flag():
+    try:
+        with open("/flag", "r") as f:
+            print(f.read())
+    except FileNotFoundError:
+        print("Error: Flag file not found.")
+
+def print_instructions():
+    print("""
+    In this challenge you will use SCP (SSH copy) to copy a file to a remote machine.
+    """)
+
+def main():
+    pass
+
+if __name__ == "__main__":
+    main()
