@@ -2,3 +2,6 @@
 
 # Start ssh server
 /etc/init.d/ssh start
+
+# Change hacker's password to hacker
+echo 'hacker:hacker' | chpasswd
