@@ -1,0 +1,65 @@
+#!/usr/bin/exec-suid -- /usr/bin/python3.12 -I
+import os
+import sys
+sys.path.append('/challenge')
+
+RESET = "\033[0m"
+YELLOW = "\033[33m"
+
+def print_flag():
+    try:
+        with open("/flag", "r") as f:
+            print(f.read())
+    except FileNotFoundError:
+        print("Error: Flag file not found.")
+
+def print_instructions():
+    print(f"""
+    In this challenge you will use SCP (SSH copy) to copy a file to a remote machine.
+    For the sake of this challenge, you will be copying a file and a directory to
+    {YELLOW}'hacker@localhost'{RESET}, which is effectively copying a file to ourselves. In the real world,
+    you would replace {YELLOW}'hacker'{RESET} with the username on the remote computer and {YELLOW}'localhost'{RESET}
+    with the hostname of the remote computer.
+
+    To complete the challenge, do the following tasks:
+
+    1. Copy the file {YELLOW}'/tmp/copyme'{RESET} to {YELLOW}'hacker@localhost:/home/hacker'{RESET}
+           This can be done by running: {YELLOW}'scp /tmp/copyme hacker@localhost:/home/hacker'{RESET}
+
+    2. Copy the directory {YELLOW}'/tmp/copythisdir'{RESET} to {YELLOW}'hacker@localhost:/home/hacker'{RESET}
+           This can be done by running: {YELLOW}'scp -r /tmp/copythisdir hacker@localhost:/home/hacker'{RESET}
+           Note: the {YELLOW}'-r'{RESET} flag must be used to copy directories.
+
+    When it asks for a password, the password is {YELLOW}hacker{RESET}.
+
+    Once you are done, run {YELLOW}'/challenge/solve'{RESET} again to get your flag!
+    """)
+
+    with open("/tmp/copyme", "w") as f:
+        f.write("I want to be copied!")
+
+    os.mkdir("/tmp/copythisdir")
+
+    with open("/tmp/ran", "w") as f:
+        f.write("ran")
+
+def check():
+    if not os.path.exists("/home/hacker/copyme"):
+        print("Uh oh, it doesn't look like you copied '/home/hacker/copyme'. Try again.")
+        return
+
+    if not os.path.exists("/home/hacker/copythisdir"):
+        print("Uh oh, it doesn't look like you copied '/home/hacker/copythisdir. Try again.")
+        return
+
+    print("Both files were copied successfully! Here is your flag:")
+    print_flag()
+
+def main():
+    if not os.path.exists("/tmp/ran"):
+        print_instructions()
+    else:
+        check()
+
+if __name__ == "__main__":
+    main()
