@@ -30,6 +30,8 @@ def print_instructions():
            This can be done by running: {YELLOW}'scp -r /tmp/copythisdir hacker@localhost:/home/hacker'{RESET}
            Note: the {YELLOW}'-r'{RESET} flag must be used to copy directories.
 
+    When it asks for a password, the password is {YELLOW}hacker{RESET}.
+
     Once you are done, run {YELLOW}'/challenge/solve'{RESET} again to get your flag!
     """)
 
